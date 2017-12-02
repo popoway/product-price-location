@@ -1,0 +1,16 @@
+{
+  "root": "./",
+  "https_only": true,
+  "headers": {
+    "/": {
+      "Cache-Control": "no-store, no-cache"
+    },
+    "/assets/**": {
+      "Cache-Control": "public, max-age=512000",
+      "Access-Control-Allow-Origin": "*"
+    }
+  },
+  "routes": {
+    "/index.html": "index.html"
+  }
+}
