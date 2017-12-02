@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-
+<html>
 <head>
   <!-- responsive page meta-->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Product Price Location">
   <title>Product Price Location</title>
@@ -16,24 +17,24 @@
   <link rel="stylesheet" href="assets/css/main.css" />
 </head>
 
-<body class="container">
+<body>
   <div class="jumbotron text-center">
-    <h1> The Product Price Location App</h1>
-  </div>
-  <div id="map">
+    <h1>Product Price Location App</h1>
+    <p>We make it easy to find the cheapest product near you!</p>
   </div>
 
+  <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+  <div id="map"></div>
+  
   <div class="text-center">Made with <i class="fa fa-heart"></i> by <a href="https://github.com/Brand0nS">Brand0nS</a>, <a href="https://github.com/popoway">popoway</a>, <a href="https://github.com/Brand0nS">zeinkap</a> and <a href="https://github.com/natesamuels">natesamuels</a></div>
 
   <!-- styling page -->
+  <!-- jQuery library -->
   <script async defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-
-  <!-- initialize googleapis -->
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1tyGEUqTjTlrPw5nEk8_T6E2AjZ2DT3U&callback=initMap"></script>
-
+  <!-- Google Maps APIs -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1tyGEUqTjTlrPw5nEk8_T6E2AjZ2DT3U&libraries=places&callback=initAutocomplete" async defer></script>
   <!-- custom maps js -->
-  <script async defer src="assets/js/main.js"></script>
+  <script src="assets/js/main.js"></script>
 
 </body>
-
 </html>
