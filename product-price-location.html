@@ -1,43 +1,53 @@
 <!DOCTYPE html>
-
+<html>
 <head>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/4.0.2/bootstrap-material-design.min.css" integrity="sha256-X/mlyZAafJ8j5e74pWh4+qNUD1zurCvLA6hODVobQX0=" crossorigin="anonymous" />
-  <link rel="stylesheet" href="assets/css/main.css" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Places Searchbox</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="assets/css/main.css">
 </head>
 
 <body>
+    <div class="jumbotron text-center">
+        <h1>Product Price Location App</h1>
+        <p>We make it easy to find the cheapest product near you!</p>
+        <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+    </div>
+    <!-- additional input fields for traveling to location  -->
+    <input id="product-input" class="controls" type="text"
+        placeholder="Enter a product">
+    <input id="origin-input" class="controls" type="text"
+        placeholder="Enter an origin location">
 
-<div id="map">
-<script>
-      function initMap() {
-        var uluru = {lat: 40.736234, lng: -73.816079};
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 15,
-          center: uluru
-        });
-        var marker = new google.maps.Marker({
-          position: uluru,
-          map: map
-        });
-      }
+    <input id="destination-input" class="controls" type="text"
+        placeholder="Enter a destination location">
+
+    <div id="mode-selector" class="controls">
+      <input type="radio" name="type" id="changemode-walking" checked="checked">
+      <label for="changemode-walking">Walking</label>
+
+      <input type="radio" name="type" id="changemode-transit">
+      <label for="changemode-transit">Transit</label>
+
+      <input type="radio" name="type" id="changemode-driving">
+      <label for="changemode-driving">Driving</label>
+    </div>
+
+    <div id="map"></div>
+
+
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1tyGEUqTjTlrPw5nEk8_T6E2AjZ2DT3U&libraries=places&callback=initAutocomplete"
+    async defer></script>
+
+    <script src="assets/js/main.js">
     </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1tyGEUqTjTlrPw5nEk8_T6E2AjZ2DT3U&callback=initMap">
-    </script>
-</div>
-
-  <h1> The Product Price Location App</h1>
-  
-
-  <!-- styling page -->
-  <script async defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-
-  <!-- initialize googleapis -->
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1tyGEUqTjTlrPw5nEk8_T6E2AjZ2DT3U&callback=initMap"></script>
-
-  <!-- custom maps js -->
-  <script async defer src="assets/js/main.js"></script>
 
 </body>
-
 </html>
