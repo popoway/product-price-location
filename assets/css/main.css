@@ -1,5 +1,17 @@
 /* Always set the map height explicitly to define the size of the div
 * element that contains the map. */
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.jumbotron {
+    margin: 0;
+    background-color: black;
+    color: white;
+}
+
 #map {
     height: 100%;
 }
@@ -49,6 +61,10 @@ html, body {
     display: inline;
 }
 
+#mode-selector {
+    color: white;
+}
+
 .pac-card {
     margin: 10px 10px 0 0;
     border-radius: 2px 0 0 2px;
@@ -79,12 +95,12 @@ html, body {
 #pac-input {
     background-color: #fff;
     font-family: Roboto;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 300;
     margin-left: 12px;
     padding: 0 11px 0 13px;
     text-overflow: ellipsis;
-    width: 400px;
+    width: 600px;
 }
 
 #pac-input:focus {
@@ -107,3 +123,33 @@ html, body {
 #target {
     width: 345px;
 }
+
+
+/* the 4 extra inputs*/
+#origin-input,
+    #product-input,
+      #destination-input {
+        background-color: #fff;
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+        padding: 0 11px 0 13px;
+        text-overflow: ellipsis;
+        width: 200px;
+      }
+
+      #origin-input:focus,
+      #destination-input:focus {
+        border-color: #4d90fe;
+      }
+
+      #mode-selector {
+        color: white;
+        padding: 5px 11px 0px 11px;
+      }
+
+      #mode-selector label {
+        font-family: Roboto;
+        font-size: 13px;
+        font-weight: 300;
+      }
