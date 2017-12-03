@@ -1,25 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    <title>Places Searchbox</title>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="assets/css/main.css">
+  <!-- responsive page meta-->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Product Price Location">
+  <title>Product Price Location</title>
+  <link rel="apple-touch-icon" href="assets/img/favicon.png">
+  <link rel="icon" href="assets/img/favicon.png">
+
+  <!-- styling page -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+
+  <!-- custom maps css -->
+  <link rel="stylesheet" href="assets/css/main.css" />
 </head>
 
 <body>
-    <div class="jumbotron text-center">
-        <h1>Product Price Location App</h1>
-        <p>We make it easy to find the cheapest product near you!</p>
-        <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-    </div>
-    <!-- additional input fields for traveling to location  -->
+  <div class="container-fluid bg-1 jumbotron text-center" style="margin-bottom: 0px; ">
+    <h1>Product Price Location App</h1>
+    <p>We make it easy to find the cheapest product near you!</p>
+  </div>
+
+  <div class="container-fluid bg-2">
+    <input id="autocomplete" placeholder="Pizza, Deli, Starbucks, etc" type="text"></input>
+      <!-- additional input fields for traveling to location  -->
     <input id="product-input" class="controls" type="text"
         placeholder="Enter a product">
     <input id="origin-input" class="controls" type="text"
@@ -38,16 +45,38 @@
       <input type="radio" name="type" id="changemode-driving">
       <label for="changemode-driving">Driving</label>
     </div>
+  </div>
+  <div class="container-fluid bg-3" id="map"></div>
 
-    <div id="map"></div>
+  <!-- Footer -->
+  <footer class="container-fluid bg-4">
+    <div class="row">
+      <!-- Responsive margin of right footer -->
+      <!-- 1.Adapt to larger screen -->
+      <div class="col-sm-8 hidden-xs text-left">
+        Made with <i class="fa fa-heart"></i> by <a href="https://github.com/Brand0nS">Brand0nS</a>, <a href="https://github.com/popoway">popoway</a>, <a href="https://github.com/Brand0nS">zeinkap</a> and <a href="https://github.com/natesamuels">natesamuels</a>
+      </div>
+      <div class="col-sm-4 hidden-xs text-right">
+        Source Code: <a href="https://github.com/popoway/product-price-location"><i class="fa fa-github" aria-hidden="true"></i>GitHub</a>
+      </div>
+      <!-- 2.Adapt to mobile screen -->
+      <div class="col-sm-12 hidden-sm hidden-md hidden-lg hidden-xl text-center">
+        Made with <i class="fa fa-heart"></i> by <a href="https://github.com/Brand0nS">Brand0nS</a>, <a href="https://github.com/popoway">popoway</a>, <a href="https://github.com/Brand0nS">zeinkap</a> and <a href="https://github.com/natesamuels">natesamuels</a>
+      </div>
+      <div class="col-xs-12 hidden-sm hidden-md hidden-lg hidden-xl text-center">
+        Source Code: <a href="https://github.com/popoway/product-price-location"><i class="fa fa-github" aria-hidden="true"></i>GitHub</a>
+      </div>
+    </div>
+  </footer>
 
-
-
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1tyGEUqTjTlrPw5nEk8_T6E2AjZ2DT3U&libraries=places&callback=initAutocomplete"
-    async defer></script>
-
-    <script src="assets/js/main.js">
-    </script>
-
+  <!-- styling page -->
+  <!-- jQuery library -->
+  <script async defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- Bootstrap library -->
+  <script async defer src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- Google Maps APIs -->
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1tyGEUqTjTlrPw5nEk8_T6E2AjZ2DT3U&libraries=places&callback=initAutocomplete"></script>
+  <!-- custom maps js -->
+  <script async defer src="assets/js/main.js"></script>
 </body>
 </html>
