@@ -7,10 +7,11 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Product Price Location">
   <title>Product Price Location</title>
+  <link rel="apple-touch-icon" href="assets/img/favicon.png">
   <link rel="icon" href="assets/img/favicon.png">
 
   <!-- styling page -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/4.0.2/bootstrap-material-design.min.css" integrity="sha256-X/mlyZAafJ8j5e74pWh4+qNUD1zurCvLA6hODVobQX0=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
 
   <!-- custom maps css -->
@@ -18,22 +19,42 @@
 </head>
 
 <body>
-  <div class="jumbotron text-center">
+  <div class="container-fluid bg-1 jumbotron text-center" style="margin-bottom: 0px; ">
     <h1>Product Price Location App</h1>
     <p>We make it easy to find the cheapest product near you!</p>
   </div>
 
-  <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-  <div id="map"></div>
+  <div class="container-fluid bg-2">
+    <input id="autocomplete" placeholder="Pizza, Deli, Starbucks, etc" type="text"></input>
+  </div>
+  <div class="container-fluid bg-3" id="map"></div>
 
-  <div class="text-center">Made with <i class="fa fa-heart"></i> by <a href="https://github.com/Brand0nS">Brand0nS</a>, <a href="https://github.com/popoway">popoway</a>, <a href="https://github.com/Brand0nS">zeinkap</a> and <a href="https://github.com/natesamuels">natesamuels</a></div>
+  <!-- Footer -->
+  <footer class="container-fluid bg-4">
+    <div class="row">
+      <!-- Responsive margin of right footer -->
+      <!-- 1.Adapt to larger screen -->
+      <div class="col-sm-8 hidden-xs text-left">
+        Made with <i class="fa fa-heart"></i> by <a href="https://github.com/Brand0nS">Brand0nS</a>, <a href="https://github.com/popoway">popoway</a>, <a href="https://github.com/Brand0nS">zeinkap</a> and <a href="https://github.com/natesamuels">natesamuels</a>
+      </div>
+      <div class="col-sm-4 hidden-xs text-right">
+        Source Code: <a href="https://github.com/popoway/product-price-location"><i class="fa fa-github" aria-hidden="true"></i>GitHub</a>
+      </div>
+      <!-- 2.Adapt to mobile screen -->
+      <div class="col-sm-12 hidden-sm hidden-md hidden-lg hidden-xl text-center">
+        Made with <i class="fa fa-heart"></i> by <a href="https://github.com/Brand0nS">Brand0nS</a>, <a href="https://github.com/popoway">popoway</a>, <a href="https://github.com/Brand0nS">zeinkap</a> and <a href="https://github.com/natesamuels">natesamuels</a>
+      </div>
+      <div class="col-xs-12 hidden-sm hidden-md hidden-lg hidden-xl text-center">
+        Source Code: <a href="https://github.com/popoway/product-price-location"><i class="fa fa-github" aria-hidden="true"></i>GitHub</a>
+      </div>
+    </div>
+  </footer>
 
   <!-- styling page -->
   <!-- jQuery library -->
-  <script async defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script async defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <!-- Bootstrap library -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/4.0.2/bootstrap-material-design.iife.js" integrity="sha256-nX1Z3jVnd0z8/vLcmMZVs9B6kbuVY153wWHueF1o2Tg=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/4.0.2/bootstrap-material-design.umd.min.js" integrity="sha256-GYcdwXot2kSaBb8kr9o8zDKYBwQ1PCkugjcCYFQS+IA=" crossorigin="anonymous"></script>
+  <script async defer src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <!-- Google Maps APIs -->
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1tyGEUqTjTlrPw5nEk8_T6E2AjZ2DT3U&libraries=places&callback=initAutocomplete"></script>
   <!-- custom maps js -->

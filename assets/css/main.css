@@ -15,6 +15,28 @@ html, body {
     font-weight: 300;
 }
 
+.container-fluid {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.bg-1 {
+    background-color: #f44242; /* Light Red */
+    color: #ffffff;
+}
+.bg-2 {
+    background-color: #474e5d; /* Dark Blue */
+    color: #ffffff;
+}
+.bg-3 {
+    background-color: #ffffff; /* White */
+    color: #555555;
+}
+.bg-4 {
+    background-color: #2f2f2f; /* Black Gray */
+    color: #fff;
+}
+
 #infowindow-content .title {
     font-weight: bold;
 }
@@ -67,6 +89,12 @@ html, body {
 
 #pac-input:focus {
     border-color: #4d90fe;
+}
+
+#autocomplete {
+  width: -webkit-fill-available;
+  height: 60px;
+  font-size: 25px;
 }
 
 #title {
