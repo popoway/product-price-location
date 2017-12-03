@@ -1,21 +1,3 @@
-new google.maps.places.Autocomplete(
-(document.getElementById('autocomplete')), {
-types: ['geocode']
-});
-
-function initMap() {
-  var uluru = {lat: 40.736234, lng: -73.816079};
-  var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 15,
-    center: uluru
-  });
-  var marker = new google.maps.Marker({
-    position: uluru,
-    map: map
-  });
-}
-
-
 // This example adds a search box to a map, using the Google Place Autocomplete
 // feature. People can enter geographical searches. The search box will return a
 // pick list containing a mix of places and predicted search terms.
@@ -23,21 +5,135 @@ function initMap() {
 // This example requires the Places library. Include the libraries=places
 // parameter when you first load the API. For example:
 // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+// function initMap() {
+//     var uluru = {lat: 40.7379735, lng: -73.81723929999998}; // coordinates for Queens College
+//     var map = new google.maps.Map(document.getElementById('map'), {
+//         zoom: 10,
+//         center: uluru
+//     });
+//     var marker = new google.maps.Marker({
+//         position: uluru,
+//         map: map
+//     });
 function initMap() {
-    var uluru = {lat: 40.736234, lng: -73.816079};
     var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 4,
-        center: uluru
+      mapTypeControl: false,
+      center: {lat: -33.8688, lng: 151.2195},
+      zoom: 13
     });
-    var marker = new google.maps.Marker({
-        position: uluru,
-        map: map
-    });
+     new AutocompleteDirectionsHandler(map);
 }
+
+/**
+        * constructor
+       */
+      function AutocompleteDirectionsHandler(map) {
+        this.map = map;
+        this.originPlaceId = null;
+        this.destinationPlaceId = null;
+        this.travelMode = 'WALKING';
+        var originInput = document.getElementById('origin-input');
+        var destinationInput = document.getElementById('destination-input');
+        var modeSelector = document.getElementById('mode-selector');
+        this.directionsService = new google.maps.DirectionsService;
+        this.directionsDisplay = new google.maps.DirectionsRenderer;
+        this.directionsDisplay.setMap(map);
+
+        var originAutocomplete = new google.maps.places.Autocomplete(
+            originInput, {placeIdOnly: true});
+        var destinationAutocomplete = new google.maps.places.Autocomplete(
+            destinationInput, {placeIdOnly: true});
+
+        this.setupClickListener('changemode-walking', 'WALKING');
+        this.setupClickListener('changemode-transit', 'TRANSIT');
+        this.setupClickListener('changemode-driving', 'DRIVING');
+
+        this.setupPlaceChangedListener(originAutocomplete, 'ORIG');
+        this.setupPlaceChangedListener(destinationAutocomplete, 'DEST');
+
+        this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(originInput);
+        this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(destinationInput);
+        this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(modeSelector);
+      }
+
+      // Sets a listener on a radio button to change the filter type on Places
+      // Autocomplete.
+      AutocompleteDirectionsHandler.prototype.setupClickListener = function(id, mode) {
+        var radioButton = document.getElementById(id);
+        var me = this;
+        radioButton.addEventListener('click', function() {
+          me.travelMode = mode;
+          me.route();
+        });
+      };
+
+      AutocompleteDirectionsHandler.prototype.setupPlaceChangedListener = function(autocomplete, mode) {
+        var me = this;
+        autocomplete.bindTo('bounds', this.map);
+        autocomplete.addListener('place_changed', function() {
+          var place = autocomplete.getPlace();
+          if (!place.place_id) {
+            window.alert("Please select an option from the dropdown list.");
+            return;
+          }
+          if (mode === 'ORIG') {
+            me.originPlaceId = place.place_id;
+          } else {
+            me.destinationPlaceId = place.place_id;
+          }
+          me.route();
+        });
+
+      };
+
+      AutocompleteDirectionsHandler.prototype.route = function() {
+        if (!this.originPlaceId || !this.destinationPlaceId) {
+          return;
+        }
+        var me = this;
+
+        this.directionsService.route({
+          origin: {'placeId': this.originPlaceId},
+          destination: {'placeId': this.destinationPlaceId},
+          travelMode: this.travelMode
+        }, function(response, status) {
+          if (status === 'OK') {
+            me.directionsDisplay.setDirections(response);
+          } else {
+            window.alert('Directions request failed due to ' + status);
+          }
+        });
+      };
+
+// This example retrieves autocomplete predictions programmatically from the
+      // autocomplete service, and displays them as an HTML list.
+
+      // This example requires the Places library. Include the libraries=places
+      // parameter when you first load the API. For example:
+      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+      function initService() {
+        var displaySuggestions = function(predictions, status) {
+          if (status != google.maps.places.PlacesServiceStatus.OK) {
+            alert(status);
+            return;
+          }
+
+          predictions.forEach(function(prediction) {
+            var li = document.createElement('li');
+            li.appendChild(document.createTextNode(prediction.description));
+            document.getElementById('results').appendChild(li);
+          });
+        };
+
+        var service = new google.maps.places.AutocompleteService();
+        service.getQueryPredictions({ input: 'pizza near Syd' }, displaySuggestions);
+      }
 
 function initAutocomplete() {
     var map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: -33.8688, lng: 151.2195},
+        center: {lat: 40.7379735, lng: -73.81723929999998},
         zoom: 13,
         mapTypeId: 'roadmap'
     });
